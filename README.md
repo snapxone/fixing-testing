@@ -4,7 +4,6 @@
 https://github.com/lzzy12/python-aria-mirror-bot
 https://github.com/magneto261290/magneto-python-aria
 https://github.com/SVR666/LoaderX-Bot
-
 ```
 - I have collected some cool features from various repositories and merged them in one.
 - So, credits goes to original repo holder, not to me. I have just collected them.
@@ -15,6 +14,7 @@ https://github.com/SVR666/LoaderX-Bot
 - First of all, full credit goes to [Shivam Jha aka lzzy12](https://github.com/lzzy12) He build up this bot from scratch.
 - Then a huge thanks to [Sreeraj V R](https://github.com/SVR666) You can checkout his [repo here](https://github.com/SVR666/LoaderX-Bot)
 - Features added from [Sreeraj V R's](https://github.com/SVR666) repo -
+- Features added from [Magneto](https://github.com/magneto261290/magneto-python-aria/commits/master) repo -
 
 ```
 1. Added Inline Buttons
