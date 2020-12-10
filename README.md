@@ -177,8 +177,6 @@ sudo docker run mirror-bot
 
 ## Deploying on Heroku
 
-## Deploying on Heroku
-
 - Run the script to generate token file(token.pickle) for Google Drive:
 ```
 python3 generate_drive_token.py
@@ -235,37 +233,3 @@ git add authorized_chats.txt -f
 git commit -asm "Added hardcoded authorized_chats.txt"
 git push heroku heroku:master
 ```
-# Using service accounts for uploading to avoid user rate limit
-For Service Account to work, you must set USE_SERVICE_ACCOUNTS="True" in config file or environment variables
-Many thanks to [AutoRClone](https://github.com/xyou365/AutoRclone) for the scripts
-## Generating service accounts
-Step 1. Generate service accounts [What is service account](https://cloud.google.com/iam/docs/service-accounts)
----------------------------------
-Let us create only the service accounts that we need. 
-**Warning:** abuse of this feature is not the aim of autorclone and we do **NOT** recommend that you make a lot of projects, just one project and 100 sa allow you plenty of use, its also possible that overabuse might get your projects banned by google. 
-
-```
-Note: 1 service account can copy around 750gb a day, 1 project makes 100 service accounts so thats 75tb a day, for most users this should easily suffice. 
-```
-
-`python3 gen_sa_accounts.py --quick-setup 1 --new-only`
-
-A folder named accounts will be created which will contain keys for the service accounts created
-
-NOTE: If you have created SAs in past from this script, you can also just re download the keys by running:
-```
-python3 gen_sa_accounts.py --download-keys project_id
-```
-
-### Add all the service accounts to the Team Drive or folder
-- Run:
-```
-python3 add_to_team_drive.py -d SharedTeamDriveSrcID
-```
-
-# Youtube-dl authentication using .netrc file
-For using your premium accounts in youtube-dl, edit the netrc file (in the root directory of this repository) according to following format:
-```
-machine host login username password my_youtube_password
-```
-where host is the name of extractor (eg. youtube, twitch). Multiple accounts of different hosts can be added each separated by a new line
