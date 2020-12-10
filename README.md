@@ -198,10 +198,6 @@ heroku git:remote -a appname
 ```
 heroku stack:set container
 ```
-- Add heroku postgres database, connect to database and create a table:
-```
-CREATE TABLE users (uid bigint, sudo boolean DEFAULT FALSE)
-
 - Add Heroku Postgres (only if you are deploying it for the 1st time)
 ```
 heroku addons:create heroku-postgresql
@@ -225,11 +221,39 @@ heroku ps:scale worker=0
 ```
 heroku ps:scale worker=1	 	
 ```
-Heroku-Note: Doing authorizations ( /authorize command ) through telegram wont be permanent as heroku uses ephemeral filesystem. They will be reset on each dyno boot. As a workaround you can:
-- Make a file authorized_chats.txt and write the user names and chat_id of you want to authorize, each separated by new line
-- Then force add authorized_chats.txt to git and push it to heroku
+
+# Using service accounts for uploading to avoid user rate limit
+For Service Account to work, you must set USE_SERVICE_ACCOUNTS="True" in config file or environment variables
+Many thanks to [AutoRClone](https://github.com/xyou365/AutoRclone) for the scripts
+**NOTE:** Using service accounts is only recommended while uploading to a team drive.
+## Generating service accounts
+Step 1. Generate service accounts [What is service account](https://cloud.google.com/iam/docs/service-accounts)
+---------------------------------
+Let us create only the service accounts that we need. 
+**Warning:** abuse of this feature is not the aim of this project and we do **NOT** recommend that you make a lot of projects, just one project and 100 sa allow you plenty of use, its also possible that over abuse might get your projects banned by google. 
+
 ```
-git add authorized_chats.txt -f
-git commit -asm "Added hardcoded authorized_chats.txt"
-git push heroku heroku:master
+Note: 1 service account can copy around 750gb a day, 1 project can make 100 service accounts so that's 75tb a day, for most users this should easily suffice. 
 ```
+
+`python3 gen_sa_accounts.py --quick-setup 1 --new-only`
+
+A folder named accounts will be created which will contain keys for the service accounts
+
+NOTE: If you have created SAs in past from this script, you can also just re download the keys by running:
+```
+python3 gen_sa_accounts.py --download-keys project_id
+```
+
+### Add all the service accounts to the Team Drive
+- Run:
+```
+python3 add_to_team_drive.py -d SharedTeamDriveSrcID
+```
+
+# Youtube-dl authentication using .netrc file
+For using your premium accounts in youtube-dl, edit the netrc file (in the root directory of this repository) according to following format:
+```
+machine host login username password my_youtube_password
+```
+where host is the name of extractor (eg. youtube, twitch). Multiple accounts of different hosts can be added each separated by a new line
