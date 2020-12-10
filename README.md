@@ -1,8 +1,11 @@
-# ! Development Stopped!
-I am offline on telegram too. So don't waste your time in messaging me on TG. Don't know when i will be back. B...Bye (◕‿◕)
-
 # Important - Read these points first
-- Original repo is https://github.com/lzzy12/python-aria-mirror-bot
+- Original repos are:
+```
+https://github.com/lzzy12/python-aria-mirror-bot
+https://github.com/magneto261290/magneto-python-aria
+https://github.com/SVR666/LoaderX-Bot
+
+```
 - I have collected some cool features from various repositories and merged them in one.
 - So, credits goes to original repo holder, not to me. I have just collected them.
 - This (or any custom) repo is not supported in official bot support group.
@@ -12,6 +15,7 @@ I am offline on telegram too. So don't waste your time in messaging me on TG. Do
 - First of all, full credit goes to [Shivam Jha aka lzzy12](https://github.com/lzzy12) He build up this bot from scratch.
 - Then a huge thanks to [Sreeraj V R](https://github.com/SVR666) You can checkout his [repo here](https://github.com/SVR666/LoaderX-Bot)
 - Features added from [Sreeraj V R's](https://github.com/SVR666) repo -
+
 ```
 1. Added Inline Buttons
 2. Added /del command to delete files from drive
