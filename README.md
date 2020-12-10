@@ -99,10 +99,6 @@ sudo pacman -S docker python
 ```
 cp config_sample.env config.env
 ```
-## Setting up config file
-```
-cp config_sample.env config.env
-```
 - Remove the first line saying:
 ```
 _____REMOVE_THIS_LINE_____=True
